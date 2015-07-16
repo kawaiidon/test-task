@@ -1,0 +1,35 @@
+<?foreach($rows as $news_body){?>
+<div class='news_body'>
+	<div class='row'>
+		<div class='span9'>
+				<a href="/news.php?id=<?echo $news_body[id];?>"><h5><?echo $news_body[name];?></h5></a><hr>
+					<div class='row'>
+						<div class='span2'>
+						<img class='img-polaroid' src='img/news/<?echo $news_body['news_img'];?>'>
+						</div>
+					<div class='span7'>
+					<?echo $news_body[short_text];?>
+					</div>
+					</div><hr>
+				<div class='span2 info_font'>
+				<i class='icon-bookmark icons'></i> <?echo $news_body[category_name];?>
+				</div>
+				<div class='span3 info_font'>
+				<i class='icon-time icons'></i><?echo $news_body[date];?>
+				</div>
+				<div class='span3 info_font'>
+				<i class='icon-tags icons'></i> 
+					<? 
+					//Вывод тегов
+					$tags = explode(',',$news_body['tags']);  
+					foreach($tags as $tag){
+					echo '<a  href="tags.php?tag='.$tag.'">'.$tag.'</a>, ';
+					}?>
+				</div>
+				<div class='span1 news_button' >
+				<a href="/news.php?id=<?echo $news_body[id];?>"><button class='btn btn-info btn-mini' >Подробнее</button></a>
+				</div>
+		</div>
+	</div>
+</div><br>
+<?}?>
